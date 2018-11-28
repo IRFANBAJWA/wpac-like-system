@@ -1,5 +1,4 @@
 <?php
-
 if( !function_exists('wpac_plugin_scripts')) {
     function wpac_plugin_scripts() {
         $user_id = get_current_user_id();
@@ -23,8 +22,16 @@ if( !function_exists('wpac_plugin_scripts')) {
 
         //Plugin Back-end CSS
         wp_enqueue_style('wpac-css', WPAC_PLUGIN_DIR. 'assets/css/main.css');
+
         //Plugin Back-end JS
         wp_enqueue_script('wpac-js', WPAC_PLUGIN_DIR. 'assets/js/main.js', 'jQuery', '1.0.0', true );
+        wp_enqueue_script('wpac-pie-js','https://cdn.zingchart.com/zingchart.min.js', true );
+        
+        wp_localize_script( 'wpac-js', 'wpac_pie', array(
+            'like' => wpac_total_count_likes() ,
+            'dislike'  => wpac_total_count_dislikes(),
+            'date' => date('Y-m-d')
+        ));
 
     }
     add_action( 'admin_enqueue_scripts', 'wpac_plugin_admin_scripts' );

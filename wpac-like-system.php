@@ -41,7 +41,7 @@ register_deactivation_hook( __FILE__, function(){
 // WPAC Validation Functions.
 require plugin_dir_path( __FILE__ ). 'inc/validate.php';
 
-// Functions to performa database related quries.
+// Functions to performa database related quries
 require plugin_dir_path( __FILE__ ). 'inc/db-functions.php';
 
 //Include Scripts & Styles
@@ -55,6 +55,9 @@ require plugin_dir_path( __FILE__ ). 'inc/btns.php';
 
 // WPAC Shortcodes.
 require plugin_dir_path( __FILE__ ). 'inc/shortcodes.php';
+
+// WPAC Dashboard Widget.
+require plugin_dir_path( __FILE__ ). 'inc/dashboard-widget.php';
 
 
 //WPAC Plugin Ajax Function for Like Button

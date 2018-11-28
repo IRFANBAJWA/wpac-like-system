@@ -53,7 +53,32 @@ function wpac_check_deslike($pid, $uid){
     ) );
     return $check_dislike;
 }
+// Total like Count today
+function wpac_total_count_likes(){
 
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . "wpac_like_system";
+    $current_date = date('Y-m-d');
+    $like_count = $wpdb->get_var( $wpdb->prepare(
+        "SELECT COUNT(*) FROM `$table_name` WHERE time = %s AND like_count= 1 ", $current_date
+    ) );
+
+    return $like_count;
+}
+// Total like Count today
+function wpac_total_count_dislikes(){
+
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . "wpac_like_system";
+    $current_date = date('Y-m-d');
+    $dislike_count = $wpdb->get_var( $wpdb->prepare(
+        "SELECT COUNT(*) FROM `$table_name` WHERE time = %s AND dislike_count= 1 ", $current_date
+    ) );
+
+    return $dislike_count;
+}
 // Add new like to database
 function wpac_insert_new_like($uid, $pid) {
 
@@ -70,12 +95,14 @@ function wpac_insert_new_like($uid, $pid) {
         array( 
             'post_id' => $post_id,
             'user_id' => $user_id,
-            'like_count' => 1
+            'like_count' => 1,
+            'time' => date('Y-m-d')
         ), 
         array( 
             '%d', 
             '%d',
-            '%d'
+            '%d',
+            '%s'
         )
     );
     if($wpdb->insert_id) {
@@ -102,12 +129,14 @@ function wpac_insert_new_dislike($uid, $pid) {
         array(
             'post_id' => $post_id,
             'user_id' => $user_id,
-            'dislike_count' => 1
+            'dislike_count' => 1,
+            'time' => date('Y-m-d')
             ),
         array(
             '%d',
             '%d',
-            '%d'
+            '%d',
+            '%s'
             )
     );
     if($wpdb->insert_id) {
