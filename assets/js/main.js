@@ -9,6 +9,8 @@ function wpac_btn_position_select(){
 
 }
 if(wpac_pie.like !== "" && wpac_pie.dislike !==""){
+    alert(wpac_pie.like);
+    alert(wpac_pie.like);
 
 var myConfig = {
     "type":"pie",
@@ -16,8 +18,8 @@ var myConfig = {
       "text": wpac_pie.date
     },
     "series":[
-      {"values":[wpac_pie.like]},
-      {"values":[wpac_pie.dislike]}
+      {"values":[parseInt(wpac_pie.like)]},
+      {"values":[parseInt(wpac_pie.dislike)]}
     ]
   };
   jQuery(document).ready(function() {

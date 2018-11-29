@@ -15,8 +15,6 @@ function ptmp_montly_sales_dashboard_widget(){
    $totallike = wpac_total_count_likes();
    $totaldislike = wpac_total_count_dislikes();
 
-   echo  $totallike;
-   echo  $totaldislike;
    echo '	<div id="myChart"></div>';
 
 }

@@ -59,6 +59,9 @@ require plugin_dir_path( __FILE__ ). 'inc/shortcodes.php';
 // WPAC Dashboard Widget.
 require plugin_dir_path( __FILE__ ). 'inc/dashboard-widget.php';
 
+// WPAC Reaction
+require plugin_dir_path( __FILE__ ). 'inc/reaction.php';
+
 
 //WPAC Plugin Ajax Function for Like Button
 function wpac_like_btn_ajax_action() {
