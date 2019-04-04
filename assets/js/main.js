@@ -9,8 +9,8 @@ function wpac_btn_position_select(){
 
 }
 if(wpac_pie.like !== "" && wpac_pie.dislike !==""){
-    alert(wpac_pie.like);
-    alert(wpac_pie.like);
+    //alert(wpac_pie.like);
+    //alert(wpac_pie.like);
 
 var myConfig = {
     "type":"pie",
@@ -32,3 +32,4 @@ var myConfig = {
  });
 
 }
+

@@ -60,7 +60,7 @@ require plugin_dir_path( __FILE__ ). 'inc/shortcodes.php';
 require plugin_dir_path( __FILE__ ). 'inc/dashboard-widget.php';
 
 // WPAC Reaction
-require plugin_dir_path( __FILE__ ). 'inc/reaction.php';
+//require plugin_dir_path( __FILE__ ). 'inc/reaction.php';
 
 
 //WPAC Plugin Ajax Function for Like Button

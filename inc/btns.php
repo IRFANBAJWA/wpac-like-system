@@ -22,9 +22,16 @@ function wpac_like_dislike_buttons($content) {
     $dislike_count = wpac_count_dislikes($post_id);
     $dislike_count  = number_format($dislike_count);
 
+    // Get display like button or emotion buttomn
+
+    $emotopm_btn_show = get_option('wpac_show_emotion_button', 'off');
+
+
+
     // Make sure single post is being viewed.
     if(is_single()) {
-        
+        if($emotopm_btn_show != 'on'){
+           
         $btns_wrap_start = '<div class="wpac-buttons-container">';
         $like_btn = '<div class="wpac-btn-container">';
         $like_btn .= '<a href="javascript:;" onclick="wpac_like_btn_ajax('.$post_id.')" class="wpac-btn wpac-like-btn wpac-flat-btn">';
@@ -96,7 +103,22 @@ function wpac_like_dislike_buttons($content) {
             }
 
         }
+    }else{
+        echo   '<div class="box">
+                    <input type="checkbox" id="like" class="field-reactions">
+                    <h3 class="text-desc">Press space and after tab key to navigation</h3>
+                    <label for="like" class="label-reactions">Like</label>
+                    <div class="toolbox"></div>
+                    <label class="overlay" for="like"></label>
+                    <button class="reaction-like"><span class="legend-reaction">Like</span></button>
+                    <button class="reaction-love"><span class="legend-reaction">Love</span></button>
+                    <button class="reaction-haha"><span class="legend-reaction">Haha</span></button>
+                    <button class="reaction-wow"><span class="legend-reaction">Wow</span></button>
+                    <button class="reaction-sad"><span class="legend-reaction">Sad</span></button>
+                    <button class="reaction-angry"><span class="legend-reaction">Angry</span></button>
+                </div>';
     }
+    }// single if
     return $content;
 
 }

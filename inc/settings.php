@@ -46,6 +46,7 @@ function wpac_plugin_settings(){
     register_setting( 'wpac-settings', 'wpac_dislike_btn_label' ,['default' => 'Dislike']);
     register_setting( 'wpac-settings', 'wpac_button_position' ,['default' => '2']);
     register_setting( 'wpac-settings', 'wpac_hide_like_button' ,['default' => 'off']);
+    register_setting( 'wpac-settings', 'wpac_show_emotion_button' ,['default' => 'off']);
     register_setting( 'wpac-settings', 'wpac_hide_dislike_button' ,['default' => 'off']);
     register_setting( 'wpac-settings', 'wpac_stats_position' ,['default' => '1']);
     register_setting( 'wpac-settings', 'wpac_like_count' ,['default' => 'This post has been Liked ']);
@@ -56,6 +57,12 @@ function wpac_plugin_settings(){
     register_setting( 'wpac-settings', 'wpac_click_dislike_btn' ,['default' => 'Post has been disliked successfully!']);
 
     // register a new section in the "wpac-setings" page
+    add_settings_section(
+        'wpac_emotion_settings_section',
+        'Like Or Emotion feekback',
+        'wpac_emotion_settings_section_cb',
+        'wpac-settings'
+    );
     add_settings_section(
         'wpac_label_settings_section',
         'WPAC Button Labels',
@@ -76,6 +83,16 @@ function wpac_plugin_settings(){
     );
 
     // register fields for settings in "wpac-settings" page
+    //Emotion filed
+
+    add_settings_field( 
+        'wpac_show_emotion_button',
+        'Hide DisLike Button?',
+        'wpac_show_emotion_button_cb',
+        'wpac-settings',
+        'wpac_emotion_settings_section'
+    );
+
 
     // Button Label Fields
     add_settings_field(
@@ -289,7 +306,22 @@ function wpac_hide_dislike_button_cb(){
     <input type="checkbox" name="wpac_hide_dislike_button" <?php echo ( $check_status )?>>
     <?php
 }
+function wpac_show_emotion_button_cb(){ 
+    // get the value of the setting we've registered with register_setting()
+    $setting = get_option('wpac_show_emotion_button');
+    $check_status = "";
+    if(isset($setting) & $setting == "on") {
+        $check_status = "checked";
+    }
+    // output the field
+    ?>
+    <input type="checkbox" name="wpac_show_emotion_button" <?php echo ( $check_status )?>>
+    <?php
+}
 function wpac_message_settings_section_cb(){
+    _e('<p>Change front end disply of button or emotions / notice</p>', 'wpaclike');
+}
+function wpac_emotion_settings_section_cb(){
     _e('<p>Custom your font end messages / notice</p>', 'wpaclike');
 }
 function wpac_message_like_count_section_cb(){
