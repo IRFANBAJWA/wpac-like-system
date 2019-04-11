@@ -121,11 +121,17 @@
 }
 
 /* Reaction */
-
+  .emotion-box{
+    position: relative;
+    width: 100%;
+    display: block;
+    clear: both;
+    height: 32px;
+  }
   
   .text-desc, [class*="reaction-"], .field-reactions, .field-reactions:checked:focus ~ .text-desc {
     clip: rect(1px, 1px, 1px, 1px);
-    overflow: hidden;
+    /* overflow: hidden; */
     position: absolute;
     top: 0;
     left: 0;
@@ -180,7 +186,9 @@
   .box {
     position: absolute;
     left: calc(50% - 150px);
-    top: calc(50% - 50px);
+    /* top: calc(50% - 50px); */
+    /* top:0; */
+    bottom: 0;
     width: 300px;
   }
   
@@ -248,7 +256,7 @@
     transform: translateX(-50%);
   }
 
-  .box:hover [class*="reaction-"] {
+  .box [class*="reaction-"] {
     transform: scale(0.8) translateY(-40px);
   }
   .box:hover [class*="reaction-"]:hover, .box:hover [class*="reaction-"]:focus {
